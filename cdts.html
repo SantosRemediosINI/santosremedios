@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créditos - LOS SANTOS REMEDIOS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --cream: #FBF6F2;
+            --sage: #93AB6F;
+            --light-green: #CAE268;
+            --dark-green: #4B704E;
+            --light-brown: #D79D6F;
+            --primary-font: 'Montserrat', sans-serif;
+            --secondary-font: 'Open Sans', sans-serif;
+            --cursive-font: 'Pacifico', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--secondary-font);
+            color: #333;
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        .section-title {
+            font-family: var(--primary-font);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-green);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--light-green), var(--sage));
+            border-radius: 2px;
+        }
+
+        /* Header Section */
+        .credits-header {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--cream) 0%, rgba(202, 226, 104, 0.3) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credits-header::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(147, 171, 111, 0.2);
+            z-index: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .credits-header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(215, 157, 111, 0.2);
+            z-index: 0;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .credits-title {
+            font-family: var(--cursive-font);
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark-green);
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
+            text-align: center;
+        }
+
+        .credits-subtitle {
+            font-size: 1.3rem;
+            text-align: center;
+            max-width: 600px;
+            line-height: 1.6;
+            color: #555;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        /* Credits Section */
+        .credits-section {
+            padding: 5rem 2rem;
+            background-color: var(--cream);
+        }
+
+        .credits-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .creators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .creator-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .creator-card.animate {
+            animation: slideUpFadeIn 0.8s ease forwards;
+        }
+
+        .creator-card:nth-child(1) { animation-delay: 0.1s; }
+        .creator-card:nth-child(2) { animation-delay: 0.2s; }
+        .creator-card:nth-child(3) { animation-delay: 0.3s; }
+        .creator-card:nth-child(4) { animation-delay: 0.4s; }
+        .creator-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .creator-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .creator-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light-green), var(--sage));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .creator-image i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .creator-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .creator-name {
+            font-family: var(--primary-font);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+        }
+
+        .creator-role {
+            color: var(--sage);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .creator-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Developer Section */
+        .developer-section {
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(202, 226, 104, 0.2) 0%, var(--cream) 100%);
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .developer-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .developer-card.animate {
+            animation: slideUpFadeIn 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .developer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .developer-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-right: 2rem;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light-brown), var(--sage));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .developer-image i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .developer-info {
+            flex: 1;
+        }
+
+        .developer-name {
+            font-family: var(--primary-font);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+        }
+
+        .developer-role {
+            color: var(--sage);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .developer-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-green);
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 2rem;
+        }
+
+        .footer-logo h3 {
+            font-family: var(--cursive-font);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--light-green);
+        }
+
+        .footer-logo p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            padding: 5px 0;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--light-green);
+            transition: left 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--light-green);
+        }
+
+        .footer-links a:hover::after {
+            left: 0;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .credits-header {
+                min-height: 40vh;
+                padding: 4rem 1rem;
+            }
+            
+            .credits-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .credits-title {
+                font-size: 2.5rem;
+            }
+            
+            .creators-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .developer-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .developer-image {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .credits-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .creator-card, .developer-card {
+                padding: 1.5rem;
+            }
+            
+            .credits-section, .developer-section {
+                padding: 3rem 1rem;
+            }
+            
+            .creator-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .creator-image i {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <section class="credits-header">
+        <div class="credits-content">
+            <h1 class="credits-title">Créditos</h1>
+            <p class="credits-subtitle">Conoce al equipo detrás de Los Santos Remedios y nuestra pomada natural</p>
+        </div>
+    </section>
+
+    <!-- Credits Section -->
+    <section class="credits-section">
+        <div class="credits-container">
+            <h2 class="section-title">Creadores de la Crema</h2>
+            <div class="creators-grid">
+                <!-- Creador 1 -->
+                <div class="creator-card">
+                    <div class="creator-image">
+                        <i class="fas fa-user"></i>
+                        <!-- <img src="ruta/a/foto1.jpg" alt="Creador 1"> -->
+                    </div>
+                    <h3 class="creator-name">Natividad Rivera Chavez</h3>
+                    <p class="creator-role">5TLOG-AV</p>
+                    <p class="creator-description">Descripcion</p>
+                </div>
+
+                <!-- Creador 2 -->
+                <div class="creator-card">
+                    <div class="creator-image">
+                        <i class="fas fa-user"></i>
+                        <!-- <img src="ruta/a/foto2.jpg" alt="Creador 2"> -->
+                    </div>
+                    <h3 class="creator-name">Lesly Camila Vega Hernandez</h3>
+                    <p class="creator-role">5TLOG-AV</p>
+                    <p class="creator-description">Descripcion</p>
+                </div>
+
+                <!-- Creador 3 -->
+                <div class="creator-card">
+                    <div class="creator-image">
+                        <i class="fas fa-user"></i>
+                        <!-- <img src="ruta/a/foto3.jpg" alt="Creador 3"> -->
+                    </div>
+                    <h3 class="creator-name">Vanessa Cruz Verde</h3>
+                    <p class="creator-role">5TLOG-AV</p>
+                    <p class="creator-description">Descripcion</p>
+                </div>
+
+                <!-- Creador 4 -->
+                <div class="creator-card">
+                    <div class="creator-image">
+                        <i class="fas fa-user"></i>
+                        <!-- <img src="ruta/a/foto4.jpg" alt="Creador 4"> -->
+                    </div>
+                    <h3 class="creator-name">Berenice Serralde Maqueda</h3>
+                    <p class="creator-role">5TLOG-AV</p>
+                    <p class="creator-description">Descripcion</p>
+                </div>
+
+                <!-- Creador 5 -->
+                <div class="creator-card">
+                    <div class="creator-image">
+                        <i class="fas fa-user"></i>
+                        <!-- <img src="ruta/a/foto5.jpg" alt="Creador 5"> -->
+                    </div>
+                    <h3 class="creator-name">Dulce Valeria Trejo Verde</h3>
+                    <p class="creator-role">5TLOG-AV</p>
+                    <p class="creator-description">Descripcion</p>
+                </div>
+            </div>
+
+            <div class="developer-section">
+                <h2 class="section-title">Desarrollador Web</h2>
+                <div class="developer-card">
+                    <div class="developer-image">
+                        <i class="fas fa-code"></i>
+                        <!-- <img src="ruta/a/foto-desarrollador.jpg" alt="Desarrollador Web"> -->
+                    </div>
+                    <div class="developer-info">
+                        <h3 class="developer-name">Leonardo Simón Resendiz</h3>
+                        <p class="developer-role">Desarrollador Web</p>
+                        <p class="developer-description">Creador de esta página web y responsable del diseño y desarrollo de la presencia digital de Los Santos Remedios.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Los Santos Remedios</h3>
+                <p>Activa el frescor apaga el dolor.</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a>
+                <a href="index.html#producto">Producto</a>
+                <a href="index.html#beneficios">Beneficios</a>
+                <a href="index.html#contacto">Contacto</a>
+                <a href="creditos.html">Créditos</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LOS SANTOS REMEDIOS. Página by Simón.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animación de elementos al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const creatorCards = document.querySelectorAll('.creator-card');
+            const developerCard = document.querySelector('.developer-card');
+            
+            function checkScroll() {
+                // Animar tarjetas de creadores
+                creatorCards.forEach(card => {
+                    const cardPosition = card.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (cardPosition < screenPosition) {
+                        card.classList.add('animate');
+                    }
+                });
+                
+                // Animar tarjeta del desarrollador
+                if (developerCard) {
+                    const devPosition = developerCard.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (devPosition < screenPosition) {
+                        developerCard.classList.add('animate');
+                    }
+                }
+            }
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Verificar al cargar la página
+            
+            // Smooth scrolling para enlaces de anclaje
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
