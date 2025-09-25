@@ -51,6 +51,7 @@
             width: 80px;
             height: 3px;
             background: linear-gradient(90deg, var(--light-green), var(--sage));
+            border-radius: 2px;
         }
 
         /* Hero Section */
@@ -74,6 +75,7 @@
             border-radius: 50%;
             background: rgba(147, 171, 111, 0.2);
             z-index: 0;
+            animation: float 6s ease-in-out infinite;
         }
 
         .hero::after {
@@ -86,6 +88,7 @@
             border-radius: 50%;
             background: rgba(215, 157, 111, 0.2);
             z-index: 0;
+            animation: float 8s ease-in-out infinite reverse;
         }
 
         .hero-content {
@@ -102,7 +105,7 @@
             color: var(--dark-green);
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-            animation: fadeInUp 1s ease-out;
+            animation: fadeInUp 1s ease-out, pulse 3s infinite alternate;
         }
 
         .hero-description {
@@ -111,6 +114,7 @@
             max-width: 600px;
             line-height: 1.6;
             color: #555;
+            animation: fadeInUp 1.2s ease-out;
         }
 
         .cta-button {
@@ -124,10 +128,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1.4s ease-out;
         }
 
         .cta-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             background: linear-gradient(90deg, var(--sage), var(--dark-green));
         }
@@ -155,6 +160,7 @@
             transform-style: preserve-3d;
             transition: transform 0.3s ease;
             filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            animation: floatProduct 4s ease-in-out infinite;
         }
 
         /* Benefits Section */
@@ -182,7 +188,18 @@
             height: 300px;
             perspective: 1000px;
             cursor: pointer;
+            opacity: 0;
+            transform: translateY(50px);
         }
+
+        .benefit-card.animate {
+            animation: slideUpFadeIn 0.8s ease forwards;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
 
         .benefit-card-inner {
             position: relative;
@@ -231,6 +248,12 @@
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: white;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, var(--sage), var(--dark-green));
         }
 
         .benefit-card h3 {
@@ -276,7 +299,18 @@
             transform-style: preserve-3d;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transform: translateY(50px);
         }
+
+        .feature.animate {
+            animation: slideUpFadeIn 0.8s ease forwards;
+        }
+
+        .feature:nth-child(1) { animation-delay: 0.1s; }
+        .feature:nth-child(2) { animation-delay: 0.2s; }
+        .feature:nth-child(3) { animation-delay: 0.3s; }
+        .feature:nth-child(4) { animation-delay: 0.4s; }
 
         .feature::before {
             content: '';
@@ -302,6 +336,12 @@
             font-size: 2.5rem;
             color: var(--sage);
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover i {
+            transform: scale(1.2);
+            color: var(--light-green);
         }
 
         .feature h3 {
@@ -332,93 +372,6 @@
             line-height: 1.6;
         }
 
-        /* Testimonials Section */
-        .testimonials {
-            padding: 5rem 2rem;
-            background-color: var(--cream);
-            position: relative;
-        }
-
-        .testimonial-container {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            height: 250px;
-        }
-
-        .testimonial-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .testimonial-slide.active {
-            opacity: 1;
-        }
-
-        .testimonial-content {
-            background: linear-gradient(135deg, var(--light-green) 0%, var(--sage) 100%);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            color: white;
-        }
-
-        .testimonial-content p {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            position: relative;
-        }
-
-        .testimonial-content p::before, .testimonial-content p::after {
-            content: '"';
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
-            position: absolute;
-        }
-
-        .testimonial-content p::before {
-            top: -20px;
-            left: -10px;
-        }
-
-        .testimonial-content p::after {
-            bottom: -40px;
-            right: -10px;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-        }
-
-        .testimonial-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #ccc;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .dot.active {
-            background-color: var(--sage);
-        }
-
         /* Eco Section */
         .eco-section {
             padding: 5rem 2rem;
@@ -431,6 +384,12 @@
             max-width: 1200px;
             margin: 0 auto;
             gap: 3rem;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .eco-content.animate {
+            animation: slideInRight 1s ease forwards;
         }
 
         .eco-text {
@@ -460,6 +419,12 @@
             display: flex;
             align-items: center;
             color: #555;
+            transition: all 0.3s ease;
+        }
+
+        .eco-text li:hover {
+            transform: translateX(5px);
+            color: var(--dark-green);
         }
 
         .eco-text li i {
@@ -483,6 +448,11 @@
             border-radius: 15px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .eco-image img:hover {
+            transform: scale(1.05) rotate(2deg);
         }
 
         /* Product Showcase */
@@ -507,7 +477,17 @@
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
         }
+
+        .showcase-item.animate {
+            animation: slideUpFadeIn 0.8s ease forwards;
+        }
+
+        .showcase-item:nth-child(1) { animation-delay: 0.1s; }
+        .showcase-item:nth-child(2) { animation-delay: 0.2s; }
+        .showcase-item:nth-child(3) { animation-delay: 0.3s; }
 
         .showcase-item:hover {
             transform: translateY(-10px) scale(1.02);
@@ -542,6 +522,12 @@
             background: linear-gradient(135deg, var(--light-green) 0%, var(--sage) 100%);
             text-align: center;
             color: white;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .final-cta.animate {
+            animation: slideUpFadeIn 1s ease forwards;
         }
 
         .cta-content h2 {
@@ -634,6 +620,13 @@
 
         .social-links a:hover {
             transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Instagram specific hover effect */
+        .social-links a.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            transform: translateY(-5px) scale(1.1);
         }
 
         .contact-form {
@@ -660,6 +653,7 @@
             outline: none;
             border-color: var(--light-green);
             box-shadow: 0 0 0 2px rgba(202, 226, 104, 0.3);
+            transform: scale(1.02);
         }
 
         .submit-button {
@@ -717,10 +711,28 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            padding: 5px 0;
+        }
+
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--light-green);
+            transition: left 0.3s ease;
         }
 
         .footer-links a:hover {
             color: var(--light-green);
+        }
+
+        .footer-links a:hover::after {
+            left: 0;
         }
 
         .footer-bottom {
@@ -753,13 +765,66 @@
             }
         }
 
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
+        @keyframes slideUpFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Efectos 3D para elementos */
-        [data-tilt] {
-            transition: transform 0.3s ease;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes floatProduct {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
         }
 
         /* Responsive Design */
@@ -767,10 +832,13 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
+                min-height: auto;
+                padding: 4rem 1rem;
             }
             
             .hero-content {
                 padding: 1rem;
+                margin-bottom: 2rem;
             }
             
             .hero-title {
@@ -784,6 +852,10 @@
             .contact-content {
                 flex-direction: column;
             }
+            
+            .product-img {
+                max-width: 300px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -795,8 +867,20 @@
                 font-size: 2.8rem;
             }
             
-            .testimonial-container {
-                height: 300px;
+            .benefits-grid,
+            .features,
+            .showcase-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefit-card, .feature, .showcase-item {
+                height: auto;
+                min-height: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
         }
 
@@ -809,24 +893,26 @@
                 font-size: 1.8rem;
             }
             
-            .benefits-grid,
-            .features,
-            .showcase-content {
-                grid-template-columns: 1fr;
+            .benefit-card, .feature, .showcase-item {
+                padding: 1.5rem;
             }
             
-            .testimonial-container {
-                height: 350px;
+            .hero, .benefits, .why-us, .eco-section, .product-showcase, .final-cta, .contact {
+                padding: 3rem 1rem;
+            }
+            
+            .product-img {
+                max-width: 250px;
             }
         }
     </style>
 </head>
 <body>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="inicio">
         <div class="hero-content">
             <h1 class="hero-title">Los Santos Remedios</h1>
-            <p class="hero-description">Pomada natural de mentol con ingredientes orgánicos para aliviar dolores musculares y articulares</p>
+            <p class="hero-description">Pomada natural de mentol con ingredientes orgánicos para aliviar dolores musculares y articulares <br> Activa el frescor, apaga el dolor. </p>
             <button class="cta-button">Compra ahora</button>
         </div>
         <div class="hero-image">
@@ -837,7 +923,7 @@
     </section>
 
     <!-- Benefits Section -->
-    <section class="benefits">
+    <section class="benefits" id="beneficios">
         <h2 class="section-title">Beneficios de nuestra pomada natural</h2>
         <div class="benefits-grid">
             <div class="benefit-card">
@@ -846,7 +932,7 @@
                         <div class="benefit-icon">
                             <i class="fas fa-heart"></i>
                         </div>
-                        <h3>Alivio <br> inmediato</h3>
+                        <h3>Alivio inmediato</h3>
                         <p>Calma el dolor muscular y articular en minutos</p>
                     </div>
                     <div class="benefit-card-back">
@@ -861,7 +947,7 @@
                         <div class="benefit-icon">
                             <i class="fas fa-running"></i>
                         </div>
-                        <h3>Recuperación <br> rápida</h3>
+                        <h3>Recuperación rápida</h3>
                         <p>Ideal para deportistas después de entrenamientos</p>
                     </div>
                     <div class="benefit-card-back">
@@ -876,7 +962,7 @@
                         <div class="benefit-icon">
                             <i class="fas fa-wind"></i>
                         </div>
-                        <h3>Sensación <br> refrescante</h3>
+                        <h3>Sensación refrescante</h3>
                         <p>Desinflama, relaja músculos y mejora la circulación</p>
                     </div>
                     <div class="benefit-card-back">
@@ -891,7 +977,7 @@
                         <div class="benefit-icon">
                             <i class="fas fa-lungs"></i>
                         </div>
-                        <h3>Efecto <br> descongestionante</h3>
+                        <h3>Efecto descongestionante</h3>
                         <p>Perfecto para malestares de resfriado</p>
                     </div>
                     <div class="benefit-card-back">
@@ -904,7 +990,7 @@
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="why-us">
+    <section class="why-us" id="producto">
         <h2 class="section-title">¿Por qué elegir nuestra pomada?</h2>
         <div class="features">
             <div class="feature">
@@ -930,42 +1016,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
-        <div class="testimonial-container">
-            <div class="testimonial-slide active">
-                <div class="testimonial-content">
-                    <p>"AQUI SE CUENTAN LOS TESTIMONIOS DE USO"</p>
-                    <div class="testimonial-author">
-                        <strong>NOMBRE 1</strong> - OCUPACION Y EDAD
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-slide">
-                <div class="testimonial-content">
-                    <p>"AQUI SE CUENTAN LOS TESTIMONIOS DE USO"</p>
-                    <div class="testimonial-author">
-                        <strong>NOMBRE 2</strong> - OCUPACION Y EDAD
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-slide">
-                <div class="testimonial-content">
-                    <p>"AQUI SE CUENTAN LOS TESTIMONIOS DE USO"</p>
-                    <div class="testimonial-author">
-                        <strong>NOMBRE 3</strong> - OCUPACION Y EDAD
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="testimonial-dots">
-            <span class="dot active" data-slide="0"></span>
-            <span class="dot" data-slide="1"></span>
-            <span class="dot" data-slide="2"></span>
-        </div>
-    </section>
-
     <!-- Eco Section -->
     <section class="eco-section">
         <div class="eco-content">
@@ -979,7 +1029,7 @@
                 </ul>
             </div>
             <div class="eco-image">
-                <img src="https://cdn.pixabay.com/photo/2017/09/06/15/12/jar-2721364_1280.png" alt="Envase de vidrio reutilizable">
+                <img src="2.png" alt="Envase de vidrio reutilizable">
             </div>
         </div>
     </section>
@@ -989,19 +1039,19 @@
         <h2 class="section-title">Nuestra pomada natural</h2>
         <div class="showcase-content">
             <div class="showcase-item">
-                <img src="https://cdn.pixabay.com/photo/2017/09/06/15/12/jar-2721364_1280.png" alt="Frasco de vidrio">
+                <img src="2.png" alt="Frasco de vidrio">
                 <h3>Frasco de vidrio reutilizable</h3>
                 <p>100% reciclable y amigable con el medio ambiente</p>
             </div>
             <div class="showcase-item">
-                <img src="https://cdn.pixabay.com/photo/2017/01/31/23/42/ointment-2027790_1280.png" alt="Textura de la pomada">
-                <h3>Textura suave</h3>
-                <p>De rápida absorción y aroma agradable</p>
+                <img src="3.jpg" alt="Textura de la pomada">
+                <h3>Informacion del producto</h3>
+                <p>Informacion simplificada</p>
             </div>
             <div class="showcase-item">
-                <img src="https://cdn.pixabay.com/photo/2016/03/31/17/38/aroma-1294750_1280.png" alt="Ingredientes naturales">
-                <h3>Ingredientes naturales</h3>
-                <p>Cera de abeja, mentol, aceite de oliva y alcohol natural</p>
+                <img src="4.jpg" alt="Ingredientes naturales">
+                <h3>Eslogan</h3>
+                <p>Activa el frescor apaga el dolor</p>
             </div>
         </div>
     </section>
@@ -1019,22 +1069,19 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section class="contact" id="contacto">
         <h2 class="section-title">Contáctanos</h2>
         <div class="contact-content">
             <div class="contact-info">
                 <h3>Estamos aquí para ayudarte</h3>
                 <p>Si tienes preguntas sobre nuestro producto o necesitas asesoramiento, no dudes en contactarnos.</p>
                 <div class="contact-details">
-                    <p><i class="fas fa-envelope"></i> sousantosremediosgmail.com</p>
+                    <p><i class="fas fa-envelope"></i> sousantosremedios@gmail.com</p>
                     <p><i class="fas fa-phone"></i> +52 427 225 8799</p>
                     <p><i class="fas fa-map-marker-alt"></i> AUN NO CONTAMOS CON TIENDA FISICA ¡ESPERALA! </p>
                 </div>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/santoos_remedioss?igsh=azk4ajRnajYxOHAw" class="instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <form class="contact-form" id="contactForm">
@@ -1057,13 +1104,13 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <h3>Los Santos Remedios</h3>
-                <p>Bienestar natural con conocimiento ancestral</p>
+                <p>Activa el frescor apaga el dolor.</p>
             </div>
             <div class="footer-links">
-                <a href="#">Inicio</a>
-                <a href="#">Producto</a>
-                <a href="#">Beneficios</a>
-                <a href="#contact">Contacto</a>
+                <a href="#inicio">Inicio</a>
+                <a href="#producto">Producto</a>
+                <a href="#beneficios">Beneficios</a>
+                <a href="#contacto">Contacto</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -1103,45 +1150,41 @@
                 });
             });
             
-            // Testimonios con desplazamiento automático
-            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
-            const dots = document.querySelectorAll('.dot');
-            let currentSlide = 0;
-            
-            function showSlide(n) {
-                testimonialSlides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                currentSlide = (n + testimonialSlides.length) % testimonialSlides.length;
-                
-                testimonialSlides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
-            
-            // Event listeners para los dots
-            dots.forEach(dot => {
-                dot.addEventListener('click', function() {
-                    showSlide(parseInt(this.getAttribute('data-slide')));
-                });
-            });
-            
-            // Cambio automático de testimonios
-            setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 5000);
-            
             // Animación de elementos al hacer scroll
             const animatedElements = document.querySelectorAll('.benefit-card, .feature, .showcase-item');
+            const ecoContent = document.querySelector('.eco-content');
+            const finalCta = document.querySelector('.final-cta');
             
             function checkScroll() {
+                // Animar elementos individuales
                 animatedElements.forEach(element => {
                     const elementPosition = element.getBoundingClientRect().top;
                     const screenPosition = window.innerHeight / 1.3;
                     
                     if (elementPosition < screenPosition) {
-                        element.classList.add('fade-in');
+                        element.classList.add('animate');
                     }
                 });
+                
+                // Animar sección eco
+                if (ecoContent) {
+                    const ecoPosition = ecoContent.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (ecoPosition < screenPosition) {
+                        ecoContent.classList.add('animate');
+                    }
+                }
+                
+                // Animar CTA final
+                if (finalCta) {
+                    const ctaPosition = finalCta.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.3;
+                    
+                    if (ctaPosition < screenPosition) {
+                        finalCta.classList.add('animate');
+                    }
+                }
             }
             
             window.addEventListener('scroll', checkScroll);
@@ -1191,4 +1234,3 @@
     </script>
 </body>
 </html>
-
